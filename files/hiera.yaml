@@ -18,5 +18,5 @@ hierarchy:
     paths:
       - "data/node/%{fqdn}.yaml"
       - "data/os/%{facts.os.distro.codename}.yaml"
-      - "data/role/%{role}.yaml"
+      - "data/role/desktop.yaml"
       - "data/common.yaml"
