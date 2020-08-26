@@ -17,6 +17,7 @@ class vision_desktop (
 
   Hash $authorized_keys,
   Hash $monitor_setup,
+  Hash $packages = {},
 
 ) {
 
@@ -36,8 +37,15 @@ class vision_desktop (
     ensure  => directory,
   }
 
-  # SSH Config
+  # Packages to install
+  $package_default = {
+    ensure   => present,
+    provider => apt,
+  }
 
+  create_resources('package', $packages, $package_default)
+
+  # SSH Config
   # Default values for any ssh_authorized_key
   $key_defaults = {
     ensure => present,

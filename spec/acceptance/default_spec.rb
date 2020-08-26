@@ -20,6 +20,10 @@ describe 'vision_desktop' do
     describe package('openssh-client') do
       it { is_expected.to be_installed }
     end
+    # from packages variable
+    describe package('tmux') do
+      it { is_expected.to be_installed }
+    end
     describe file('/local') do
       it { is_expected.to be_directory }
     end
