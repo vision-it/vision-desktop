@@ -23,6 +23,9 @@ describe 'vision_desktop' do
     describe file('/local') do
       it { is_expected.to be_directory }
     end
+    describe user('root') do
+      it { should have_authorized_key 'ssh-ed25519 aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1kUXc0dzlXZ1hjUQ==' }
+    end
     describe file('/etc/ssh/sshd_config') do
       it { is_expected.to be_owned_by 'root' }
       it { is_expected.to be_mode 644 }

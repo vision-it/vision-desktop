@@ -1,4 +1,9 @@
 ---
+vision_desktop::authorized_keys:
+  rick:
+    type: 'ssh-ed25519'
+    key: 'aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1kUXc0dzlXZ1hjUQ=='
+
 vision_desktop::puppet::environment: 'production'
 vision_desktop::nfs::homes_source: 'foo.bar.de:/export/homes'
 vision_desktop::nfs::it_source: 'foo.bar.de:/export/it'

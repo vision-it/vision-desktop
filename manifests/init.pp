@@ -4,6 +4,8 @@
 # Parameters
 # ----------
 #
+# @param authorized_keys Authorized SSH keys
+#
 # Examples
 # --------
 #
@@ -12,6 +14,8 @@
 #
 
 class vision_desktop (
+
+  Hash $authorized_keys,
 
 ) {
 
@@ -32,7 +36,15 @@ class vision_desktop (
   }
 
   # SSH Config
-  # TODO: SSH Keys
+
+  # Default values for any ssh_authorized_key
+  $key_defaults = {
+    ensure => present,
+    user   => 'root',
+  }
+
+  create_resources('ssh_authorized_key', $authorized_keys, $key_defaults)
+
   package {['openssh-client', 'openssh-server']:
     ensure => present,
   }
