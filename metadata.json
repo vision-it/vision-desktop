@@ -1,0 +1,17 @@
+{
+  "name": "vision_desktop",
+  "version": "1.0.0",
+  "author": "vision-it",
+  "source": "",
+  "summary": "",
+  "license": "Apache-2.0",
+  "dependencies": [],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "10"
+      ]
+    }
+  ]
+}

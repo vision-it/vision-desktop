@@ -1,0 +1,173 @@
+require: rubocop-rspec
+AllCops:
+  TargetRubyVersion: 2.5
+  Include:
+    - ./**/*.rb
+  Exclude:
+    - Rakefile
+    - Gemfile
+    - files/**/*
+    - lib/**/*
+    - vendor/**/*
+    - .vendor/**/*
+    - pkg/**/*
+    - spec/fixtures/**/*
+
+Layout/ClosingParenthesisIndentation:
+  Enabled: False
+
+Layout/FirstParameterIndentation:
+  Enabled: False
+
+Metrics/BlockLength:
+    Enabled: False
+
+Metrics/MethodLength:
+  Enabled: False
+
+Metrics/ModuleLength:
+  Enabled: False
+
+Metrics/ClassLength:
+  Enabled: False
+
+Metrics/CyclomaticComplexity:
+  Enabled: False
+
+Metrics/LineLength:
+  Enabled: False
+
+Metrics/AbcSize:
+  Enabled: False
+
+RSpec/DescribeClass:
+  Enabled: False
+
+RSpec/ExampleLength:
+  Enabled: False
+
+RSpec/NamedSubject:
+  Enabled: False
+
+RSpec/RepeatedDescription:
+  Enabled: False
+
+RSpec/NestedGroups:
+  Enabled: False
+
+Security/YAMLLoad:
+  Enabled: False
+
+RSpec/MultipleDescribes:
+  Enabled: False
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: False
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: False
+
+Lint/BinaryOperatorWithIdenticalOperands:
+  Enabled: False
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: True
+
+Lint/DuplicateElsifCondition:
+  Enabled: True
+
+Lint/DuplicateRescueException:
+  Enabled: True
+
+Lint/EmptyConditionalBody:
+  Enabled: True
+
+Lint/FloatComparison:
+  Enabled: True
+
+Lint/MissingSuper:
+  Enabled: False
+
+Lint/MixedRegexpCaptureTypes:
+  Enabled: True
+
+Lint/OutOfRangeRegexpRef:
+  Enabled: True
+
+Lint/RaiseException:
+  Enabled: True
+
+Lint/SelfAssignment:
+  Enabled: False
+
+Lint/StructNewOverride:
+  Enabled: False
+
+Lint/TopLevelReturnWithArgument:
+  Enabled: False
+
+Lint/UnreachableLoop:
+  Enabled: True
+
+Style/AccessorGrouping:
+  Enabled: True
+
+Style/ArrayCoercion:
+  Enabled: True
+
+Style/BisectedAttrAccessor:
+  Enabled: True
+
+Style/CaseLikeIf:
+  Enabled: True
+
+Style/ExplicitBlockArgument:
+  Enabled: True
+
+Style/ExponentialNotation:
+  Enabled: True
+
+Style/GlobalStdStream:
+  Enabled: True
+
+Style/HashAsLastArrayItem:
+  Enabled: True
+
+Style/HashEachMethods:
+    Enabled: True
+
+Style/HashLikeCase:
+  Enabled: True
+
+Style/HashTransformKeys:
+  Enabled: True
+
+Style/HashTransformValues:
+  Enabled: True
+
+Style/OptionalBooleanParameter:
+  Enabled: True
+
+Style/RedundantAssignment:
+  Enabled: True
+
+Style/RedundantFetchBlock:
+  Enabled: True
+
+Style/RedundantFileExtensionInRequire:
+  Enabled: True
+
+Style/RedundantRegexpCharacterClass:
+  Enabled: True
+
+Style/RedundantRegexpEscape:
+  Enabled: True
+
+Style/SingleArgumentDig:
+  Enabled: True
+
+Style/SlicingWithRange:
+  Enabled: True
+
+Style/StringConcatenation:
+  Enabled: True

@@ -1,0 +1,16 @@
+# This file is managed by Puppet
+
+Banner no
+ChallengeResponseAuthentication no
+IgnoreRhosts yes
+PasswordAuthentication no
+PermitRootLogin prohibit-password
+PrintLastLog yes
+PrintMotd no
+Protocol 2
+PubkeyAuthentication yes
+StrictModes yes
+SyslogFacility AUTH
+UsePAM yes
+UsePrivilegeSeparation yes
+X11Forwarding no

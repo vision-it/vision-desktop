@@ -1,0 +1,22 @@
+# This file is managed by Puppet
+---
+version: 5
+
+defaults:
+    datadir: "/etc/puppetlabs/code/environments/%{environment}"
+
+hierarchy:
+  - name: "eYaml Role Secrets"
+    lookup_key: eyaml_lookup_key
+    paths:
+      - "secrets/role/%{role}.eyaml"
+    options:
+      pkcs7_private_key: "/etc/puppetlabs/puppet/eyaml/private_key.pem"
+      pkcs7_public_key:  "/etc/puppetlabs/puppet/eyaml/public_key.pem"
+  - name: "Yaml Backend"
+    data_hash: yaml_data
+    paths:
+      - "data/node/%{fqdn}.yaml"
+      - "data/os/%{facts.os.distro.codename}.yaml"
+      - "data/role/%{role}.yaml"
+      - "data/common.yaml"

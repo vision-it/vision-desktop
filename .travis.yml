@@ -1,0 +1,27 @@
+sudo: false
+language: ruby
+cache: bundler
+rvm: 2.5
+before_install:
+  - 'gem install bundler -v 2.0.2'
+script:
+  - 'bundle exec rake $CHECK'
+matrix:
+  fast_finish: true
+  allow_failures:
+    - env: STRICT_VARIABLES="yes" CHECK="rubocop"
+      bundler_args: --without testing acceptance
+  include:
+    - env: STRICT_VARIABLES="yes" CHECK="rubocop"
+      bundler_args: --without testing acceptance
+    - env: STRICT_VARIABLES="yes" CHECK="lint"
+      bundler_args: --without rubocop acceptance
+    - env: STRICT_VARIABLES="yes" CHECK="validate"
+      bundler_args: --without rubocop acceptance
+    - env: STRICT_VARIABLES="yes" CHECK="spec"
+      bundler_args: --without rubocop acceptance
+    - env: STRICT_VARIABLES="yes" CHECK="beaker" BEAKER_set="debian10"
+      services: docker
+      sudo: required
+notifications:
+  email: false

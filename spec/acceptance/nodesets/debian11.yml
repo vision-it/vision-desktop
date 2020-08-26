@@ -1,0 +1,14 @@
+HOSTS:
+  debian-11-x64:
+    platform: debian-11-amd64
+    hypervisor: docker
+    image: debian:bullseye
+    docker_preserve_image: true
+    docker_image_commands:
+      - 'apt-get update && apt-get install -y cron locales-all net-tools wget git vim apt-transport-https systemd'
+      - 'rm -f /usr/sbin/policy-rc.d'
+      - 'export PATH="$PATH:/opt/puppetlabs/bin" > /root/.bashrc'
+CONFIG:
+  trace_limit: 200
+  masterless: true
+  type: aio

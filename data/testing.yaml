@@ -1,0 +1,12 @@
+---
+vision_desktop::puppet::environment: 'production'
+vision_desktop::nfs::homes_source: 'foo.bar.de:/export/homes'
+vision_desktop::nfs::it_source: 'foo.bar.de:/export/it'
+vision_desktop::idm::realm: 'FOOBAR.DE'
+vision_desktop::idm::admin_kdc: 'foo.bar.de'
+vision_desktop::idm::kdcs:
+  - 'foo.bar.de'
+  - 'foo.bar.com'
+vision_desktop::idm::keytab_content: '0xDEADFACECAFE'
+vision_desktop::idm::ldap_base: 'dc=foo,dc=bar'
+vision_desktop::idm::ldap_server: 'bar.foo.de'

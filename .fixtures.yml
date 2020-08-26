@@ -1,0 +1,17 @@
+---
+fixtures:
+  repositories:
+    stdlib:
+      ref: "v6.2.0"
+      repo: "https://github.com/puppetlabs/puppetlabs-stdlib"
+    apt:
+      ref: "v7.4.2"
+      repo: "https://github.com/puppetlabs/puppetlabs-apt"
+    archive:
+      ref: "v4.6.0"
+      repo: "https://github.com/voxpupuli/puppet-archive"
+    docker:
+      ref: "v3.11.0"
+      repo: "https://github.com/puppetlabs/puppetlabs-docker"
+  symlinks:
+    vision_desktop: '#{source_dir}'

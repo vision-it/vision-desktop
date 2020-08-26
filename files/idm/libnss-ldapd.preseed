@@ -1,0 +1,3 @@
+# This file is managed by Puppet
+libnss-ldapd	libnss-ldapd/nsswitch	multiselect	group, passwd
+libnss-ldapd	libnss-ldapd/clean_nsswitch	boolean	false

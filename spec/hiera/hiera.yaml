@@ -1,0 +1,9 @@
+---
+:backends:
+  - yaml
+:hierarchy:
+  - "os/%{::os.lsb.distcodename}"
+  - testing
+  - common
+:yaml:
+  :datadir: 'data'
