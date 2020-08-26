@@ -6,10 +6,10 @@ defaults:
     datadir: "/etc/puppetlabs/code/environments/%{environment}"
 
 hierarchy:
-  - name: "eYaml Role Secrets"
+  - name: "eYaml Secrets"
     lookup_key: eyaml_lookup_key
     paths:
-      - "secrets/role/%{role}.eyaml"
+      - "secrets/node/%{fqdn}.eyaml"
     options:
       pkcs7_private_key: "/etc/puppetlabs/puppet/eyaml/private_key.pem"
       pkcs7_public_key:  "/etc/puppetlabs/puppet/eyaml/public_key.pem"
