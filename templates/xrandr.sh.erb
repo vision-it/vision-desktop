@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# This file is managed by Puppet
+# Script to automatically configure the resolution / monitor setup of desktops PCs
+
+case $(hostname) in
+
+<% @monitor_setup.each do | host_key, host_value | -%>
+  "<%= host_key %>")
+  <%= host_value['xrandr'] %>
+  ;;
+<% end -%>
+
+  *)
+    echo "Sorry, no setup found. Please edit $0";
+    exit 1;
+    ;;
+
+esac

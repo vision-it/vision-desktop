@@ -16,6 +16,7 @@
 class vision_desktop (
 
   Hash $authorized_keys,
+  Hash $monitor_setup,
 
 ) {
 
@@ -62,6 +63,14 @@ class vision_desktop (
     enable     => true,
     hasrestart => true,
     require    => File['/etc/ssh/sshd_config'],
+  }
+
+  # Monitor/Resolution Config
+  file { '/usr/local/bin/xrandr.sh':
+    ensure  => present,
+    content => template('vision_desktop/xrandr.sh.erb'),
+    mode    => '0775',
+    owner   => 'root',
   }
 
 }
