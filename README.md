@@ -1,6 +1,6 @@
 # vision-desktop
 
-[![Build Status](https://travis-ci.org/vision-it/vision-desktop.svg?branch=development)](https://travis-ci.org/vision-it/vision-desktop)
+[![Build Status](https://travis-ci.org/vision-it/vision-desktop.svg?branch=production)](https://travis-ci.org/vision-it/vision-desktop)
 
 ## Parameter
 
