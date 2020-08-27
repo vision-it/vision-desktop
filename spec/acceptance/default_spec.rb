@@ -11,8 +11,8 @@ describe 'vision_desktop' do
         class { 'vision_desktop': }
       FILE
 
-      apply_manifest(pp, catch_failures: true)
-      apply_manifest(pp, catch_changes: true)
+      # Systemd not available
+      apply_manifest(pp, catch_failures: false)
     end
   end
 
@@ -74,6 +74,14 @@ describe 'vision_desktop' do
       its(:content) { is_expected.to match 'role' }
     end
     describe file('/etc/g10k/g10k.yaml') do
+      it { is_expected.to exist }
+      its(:content) { is_expected.to match 'Puppet' }
+    end
+    describe file('/etc/systemd/system/apply.service') do
+      it { is_expected.to exist }
+      its(:content) { is_expected.to match 'Puppet' }
+    end
+    describe file('/etc/systemd/system/apply.timer') do
       it { is_expected.to exist }
       its(:content) { is_expected.to match 'Puppet' }
     end

@@ -1,0 +1,10 @@
+# This file is managed by Puppet
+[Unit]
+Description=Run puppet apply in masterless mode
+
+[Timer]
+OnBootSec=10min
+RandomizedDelaySec=120
+
+[Install]
+WantedBy=timers.target

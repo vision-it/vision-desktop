@@ -74,6 +74,33 @@ class vision_desktop::puppet (
   }
 
   # TODO: manage g10k download
-  # TODO: Puppet Apply Timer
+  file { '/etc/systemd/system/deploy.service':
+    ensure  => present,
+    content => file('vision_desktop/deploy.service'),
+  }
+
+  file { '/etc/systemd/system/apply.service':
+    ensure  => present,
+    content => file('vision_desktop/apply.service'),
+    require => File['/etc/systemd/system/deploy.service'],
+    notify  => Service['apply'],
+  }
+
+  file { '/etc/systemd/system/apply.timer':
+    ensure  => present,
+    content => file('vision_desktop/apply.timer'),
+    notify  => Service['apply'],
+  }
+
+  service { 'apply':
+    ensure   => running,
+    enable   => true,
+    provider => 'systemd',
+    name     => 'apply.timer',
+    require  => [
+      File['/etc/systemd/system/apply.service'],
+      File['/etc/systemd/system/apply.timer'],
+    ],
+  }
 
 }

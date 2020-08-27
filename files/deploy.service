@@ -1,0 +1,15 @@
+# This file is managed by Puppet
+[Unit]
+Description=Fetch Updates for Puppet Modules with g10k and Postrun
+Requires=local-fs.target
+ConditionPathIsReadWrite=/etc/puppetlabs/code/environments
+ConditionFileIsExecutable=/opt/puppetlabs/bin/g10k
+ConditionFileNotEmpty=/etc/g10k/g10k.yaml
+
+[Service]
+Type=oneshot
+ProtectKernelTunables=true
+ExecStart=/opt/puppetlabs/bin/g10k -quiet -config /etc/g10k/g10k.yaml
+
+[Install]
+WantedBy=multi-user.target

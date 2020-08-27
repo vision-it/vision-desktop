@@ -1,0 +1,16 @@
+# This file is managed by Puppet
+[Unit]
+Description=Run puppet apply in masterless mode
+Documentation=man:puppet(1)
+Documentation=https://puppet.com/docs/puppet/6.17/configuration.html
+Requires=local-fs.target
+Wants=deploy.service
+After=deploy.service
+
+[Service]
+Type=oneshot
+SuccessExitStatus=0 2
+ExecStart=/opt/puppetlabs/bin/puppet apply --detailed-exitcodes /etc/puppetlabs/puppet/site.pp
+
+[Install]
+WantedBy=multi-user.target
