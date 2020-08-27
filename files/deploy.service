@@ -8,7 +8,6 @@ ConditionFileNotEmpty=/etc/g10k/g10k.yaml
 
 [Service]
 Type=oneshot
-ProtectKernelTunables=true
 ExecStart=/opt/puppetlabs/bin/g10k -quiet -config /etc/g10k/g10k.yaml
 
 [Install]
