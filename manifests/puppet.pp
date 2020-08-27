@@ -18,6 +18,7 @@ class vision_desktop::puppet (
   String $environment,
   String $repo_key,
   String $repo_key_id,
+  String $control_repo_url,
 
 ) {
 
@@ -61,6 +62,18 @@ class vision_desktop::puppet (
     require => Package['puppet-agent'],
   }
 
+  file { '/etc/g10k/':
+    ensure  => directory,
+  }
+
+  file { '/etc/g10k/g10k.yaml':
+    ensure  => present,
+    mode    => '0644',
+    content => template('vision_desktop/g10k.yaml.erb'),
+    require => File['/etc/g10k'],
+  }
+
+  # TODO: manage g10k download
   # TODO: Puppet Apply Timer
 
 }

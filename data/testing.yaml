@@ -11,6 +11,8 @@ vision_desktop::packages:
     ensure: 'present'
 
 vision_desktop::puppet::environment: 'production'
+vision_desktop::puppet::control_repo_url: 'git@gitlab.localhost:control.git'
+
 vision_desktop::nfs::homes_source: 'foo.bar.de:/export/homes'
 vision_desktop::nfs::it_source: 'foo.bar.de:/export/it'
 vision_desktop::idm::realm: 'FOOBAR.DE'

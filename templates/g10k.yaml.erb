@@ -1,0 +1,9 @@
+# This file is managed by Puppet
+---
+puppetfilelocation: '/etc/puppetlabs/code/environments/production/Puppetfile'
+cachedir: '/var/lib/puppet/cache/r10k'
+sources:
+  puppet:
+    basedir: '/etc/puppetlabs/code/environments'
+    prefix: false
+    remote: '<%= @control_repo_url %>'

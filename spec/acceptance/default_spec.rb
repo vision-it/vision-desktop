@@ -73,6 +73,10 @@ describe 'vision_desktop' do
       its(:content) { is_expected.to match 'Puppet' }
       its(:content) { is_expected.to match 'role' }
     end
+    describe file('/etc/g10k/g10k.yaml') do
+      it { is_expected.to exist }
+      its(:content) { is_expected.to match 'Puppet' }
+    end
   end
 
   context 'nfs configuration' do
