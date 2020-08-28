@@ -5,6 +5,10 @@ describe 'vision_desktop' do
     it 'run idempotently' do
       pp = <<-FILE
 
+        # Mocking ldap group
+        group {'vision-it':
+         ensure => present,
+        }
         # Mocking Docker, since it wont work in the tests
         class docker () {}
 

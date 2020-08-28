@@ -34,7 +34,9 @@ class vision_desktop (
 
   # Local directory for personal files
   file { '/local':
-    ensure  => directory,
+    ensure => directory,
+    group  => 'vision-it',
+    mode   => '0775',
   }
 
   # Packages to install
