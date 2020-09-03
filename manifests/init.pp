@@ -5,6 +5,9 @@
 # ----------
 #
 # @param authorized_keys Authorized SSH keys
+# @param monitor_setup xrandr monitoring setup script
+# @param packages Packages to install
+
 #
 # Examples
 # --------
