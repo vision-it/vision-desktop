@@ -5,8 +5,8 @@ describe 'vision_desktop' do
     it 'run idempotently' do
       pp = <<-FILE
 
-        # Mocking ldap group
-        group {'vision-it':
+        # Mocking docker group
+        group {'docker':
          ensure => present,
         }
         # Mocking Docker, since it wont work in the tests
@@ -28,16 +28,18 @@ describe 'vision_desktop' do
     describe package('tmux') do
       it { is_expected.to be_installed }
     end
-    describe file('/local') do
-      it { is_expected.to be_directory }
-    end
-    describe user('root') do
-      it { should have_authorized_key 'ssh-ed25519 aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1kUXc0dzlXZ1hjUQ==' }
-    end
     describe file('/etc/ssh/sshd_config') do
       it { is_expected.to be_owned_by 'root' }
       it { is_expected.to be_mode 644 }
       its(:content) { is_expected.to match 'Puppet' }
+    end
+  end
+
+  context 'Users provisioned' do
+    describe user('rick') do
+      it { is_expected.to exist }
+      it { is_expected.to have_home_directory '/home/rick' }
+      it { is_expected.to have_authorized_key 'ssh-ed25519 aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1kUXc0dzlXZ1hjUQ==' }
     end
   end
 
@@ -91,79 +93,23 @@ describe 'vision_desktop' do
     end
   end
 
-  context 'nfs configuration' do
-    describe package('nfs-common') do
-      it { is_expected.to be_installed }
-    end
-    describe file('/itshare') do
-      it { is_expected.to be_directory }
-    end
-    describe file('/home/nfs') do
-      it { is_expected.to be_directory }
-    end
-    describe file('/etc/fstab') do
-      it { is_expected.to be_file }
-      it { is_expected.to contain 'foo.bar.de:/export/homes /home/nfs nfs4 vers=4,sec=krb5p' }
-      it { is_expected.to contain 'foo.bar.de:/export/it /itshare nfs4 vers=4,sec=krb5p' }
-      it { is_expected.to contain '_netdev' }
-      it { is_expected.to contain 'x-systemd.automount' }
-    end
-    describe file('/etc/default/nfs-common') do
-      it { is_expected.to be_file }
-      it { is_expected.to contain 'NEED_IMAPD=yes' }
-      it { is_expected.to contain 'NEED_GSSD=yes' }
-    end
-  end
-
   context 'idm configuration' do
-    describe package('libnss-ldapd') do
+    describe package('ldap-utils') do
       it { is_expected.to be_installed }
     end
-    describe package('krb5-user') do
+    describe package('nscd') do
       it { is_expected.to be_installed }
     end
-    describe package('krb5-config') do
-      it { is_expected.to be_installed }
-    end
-    describe package('libpam-krb5') do
-      it { is_expected.to be_installed }
-    end
-
-    describe file('/etc/krb5.conf') do
+    describe file('/etc/ldap/ldap.conf') do
       it { is_expected.to be_file }
       it { is_expected.to be_mode 644 }
-      it { is_expected.to contain 'default_realm = FOOBAR.DE' }
-      it { is_expected.to contain 'admin_server = foo.bar.de' }
-      it { is_expected.to contain 'kdc = foo.bar.de' }
-      it { is_expected.to contain 'kdc = foo.bar.com' }
+      it { is_expected.to contain 'Puppet' }
+      it { is_expected.to contain 'bar.foo.de' }
     end
-
-    describe file('/etc/krb5.keytab') do
-      it { is_expected.to be_file }
-      it { is_expected.to be_mode 600 }
-      it { is_expected.to contain '0xDEADFACECAFE' }
-    end
-
-    describe file('/etc/nslcd.conf') do
-      it { is_expected.to be_file }
-      it { is_expected.to be_mode 640 }
-      it { is_expected.to contain 'tls_reqcert never' }
-      it { is_expected.to contain 'base dc=foo,dc=bar' }
-      it { is_expected.to contain 'uri ldaps://bar.foo.de' }
-    end
-
     describe file('/etc/nsswitch.conf') do
       it { is_expected.to be_file }
-      it { is_expected.to contain 'compat ldap' }
-    end
-
-    describe file('/etc/idmapd.conf') do
-      it { is_expected.to be_file }
-      it { is_expected.to contain 'vision' }
-    end
-    describe service('nslcd') do
-      it { is_expected.to be_enabled }
-      it { is_expected.to be_running }
+      it { is_expected.to contain 'Puppet' }
+      it { is_expected.to contain 'ldap compat' }
     end
     describe service('nscd') do
       it { is_expected.to be_enabled }

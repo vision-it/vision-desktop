@@ -18,6 +18,7 @@
 
 class vision_desktop (
 
+  Hash $users,
   Hash $authorized_keys,
   Hash $monitor_setup,
   Hash $packages = {},
@@ -32,31 +33,31 @@ class vision_desktop (
   contain vision_desktop::puppet
 
   contain vision_desktop::idm
-  contain vision_desktop::nfs
   contain vision_desktop::editors::phpstorm
 
-  # Local directory for personal files
-  file { '/local':
-    ensure => directory,
-    group  => 'vision-it',
-    mode   => '0775',
+  # Default values for any user
+  $user_defaults = {
+    ensure     => present,
+    managehome => true,
+    groups     => [
+      'sudo',
+      'adm',
+      'docker',
+    ]
   }
+  create_resources(user, $users, $user_defaults)
 
   # Packages to install
   $package_default = {
     ensure   => present,
     provider => apt,
   }
-
   create_resources('package', $packages, $package_default)
 
   # SSH Config
-  # Default values for any ssh_authorized_key
   $key_defaults = {
     ensure => present,
-    user   => 'root',
   }
-
   create_resources('ssh_authorized_key', $authorized_keys, $key_defaults)
 
   package {['openssh-client', 'openssh-server']:

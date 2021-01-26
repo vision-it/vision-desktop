@@ -3,6 +3,11 @@ vision_desktop::authorized_keys:
   rick:
     type: 'ssh-ed25519'
     key: 'aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1kUXc0dzlXZ1hjUQ=='
+    user: 'rick'
+vision_desktop::users:
+  rick:
+    comment: 'Rick A.'
+    shell: '/bin/bash'
 vision_desktop::monitor_setup:
   mypc:
     xrandr: "xrandr --output 'DVI-I-1' --auto --left-of 'VGA-1'"
@@ -12,14 +17,5 @@ vision_desktop::packages:
 
 vision_desktop::puppet::environment: 'production'
 vision_desktop::puppet::control_repo_url: 'git@gitlab.localhost:control.git'
-
-vision_desktop::nfs::homes_source: 'foo.bar.de:/export/homes'
-vision_desktop::nfs::it_source: 'foo.bar.de:/export/it'
-vision_desktop::idm::realm: 'FOOBAR.DE'
-vision_desktop::idm::admin_kdc: 'foo.bar.de'
-vision_desktop::idm::kdcs:
-  - 'foo.bar.de'
-  - 'foo.bar.com'
-vision_desktop::idm::keytab_content: '0xDEADFACECAFE'
 vision_desktop::idm::ldap_base: 'dc=foo,dc=bar'
 vision_desktop::idm::ldap_server: 'bar.foo.de'
