@@ -115,4 +115,17 @@ describe 'vision_desktop' do
       it { is_expected.to be_enabled }
     end
   end
+  context 'manage sudoers' do
+    describe package('sudo') do
+      it { is_expected.to be_installed }
+    end
+    describe file('/etc/sudoers.d/80_sudoers') do
+      its(:content) { is_expected.to match 'Puppet' }
+      its(:content) { is_expected.to match 'NOPASSWD' }
+      it { is_expected.to be_mode 440 }
+    end
+    describe command('visudo -c') do
+      its(:exit_status) { is_expected.to eq 0 }
+    end
+  end
 end

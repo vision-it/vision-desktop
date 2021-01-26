@@ -40,4 +40,14 @@ class vision_desktop::idm (
     require    => File['/etc/ldap/ldap.conf'],
     subscribe  => File['/etc/ldap/ldap.conf'],
   }
+
+  package { 'sudo':
+    ensure  => present,
+  }
+
+  file { '/etc/sudoers.d/80_sudoers':
+    ensure  => present,
+    mode    => '0440',
+    content => file('vision_desktop/idm/sudoers.conf'),
+  }
 }
