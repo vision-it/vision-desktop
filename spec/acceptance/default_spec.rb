@@ -100,6 +100,14 @@ describe 'vision_desktop' do
     describe package('nscd') do
       it { is_expected.to be_installed }
     end
+    describe file('/etc/pam_ldap.conf') do
+      it { is_expected.to contain 'Puppet' }
+      it { is_expected.to be_file }
+    end
+    describe file('/etc/libnss-ldap.conf') do
+      it { is_expected.to contain 'Puppet' }
+      it { is_expected.to be_file }
+    end
     describe file('/etc/ldap/ldap.conf') do
       it { is_expected.to be_file }
       it { is_expected.to be_mode 644 }
