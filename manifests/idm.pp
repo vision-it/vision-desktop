@@ -27,6 +27,16 @@ class vision_desktop::idm (
     content => template('vision_desktop/idm/ldap.conf.erb'),
   }
 
+  file { '/etc/pam_ldap.conf':
+    ensure  => present,
+    content => template('vision_desktop/idm/pam_ldap.conf.erb'),
+  }
+
+  file { '/etc/libnss-ldap.conf':
+    ensure  => present,
+    content => template('vision_desktop/idm/libnss-ldap.conf.erb'),
+  }
+
   file { '/etc/nsswitch.conf':
     ensure  => present,
     content => file('vision_desktop/idm/nsswitch.conf'),
