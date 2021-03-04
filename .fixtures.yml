@@ -16,5 +16,8 @@ fixtures:
     docker:
       ref: "v3.11.0"
       repo: "https://github.com/puppetlabs/puppetlabs-docker"
+    unattended_upgrades:
+      ref: "v5.1.0"
+      repo: "https://github.com/voxpupuli/puppet-unattended_upgrades"
   symlinks:
     vision_desktop: '#{source_dir}'
