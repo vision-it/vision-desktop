@@ -21,6 +21,7 @@ class vision_desktop (
   Hash $users,
   Hash $authorized_keys,
   Hash $monitor_setup,
+  String $mail,
   Hash $packages = {},
 
 ) {
@@ -85,6 +86,15 @@ class vision_desktop (
     content => template('vision_desktop/xrandr.sh.erb'),
     mode    => '0775',
     owner   => 'root',
+  }
+
+  class { 'unattended_upgrades':
+    install_on_shutdown    => true,
+    mail                   => { 'to'            => $mail,
+                                'only_on_error' => true,
+
+    },
+    remove_new_unused_deps => true,
   }
 
 }

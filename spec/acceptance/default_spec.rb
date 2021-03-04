@@ -33,6 +33,11 @@ describe 'vision_desktop' do
       it { is_expected.to be_mode 644 }
       its(:content) { is_expected.to match 'Puppet' }
     end
+    describe file('/etc/apt/apt.conf.d/50unattended-upgrades') do
+      it { is_expected.to be_file }
+      its(:content) { is_expected.to match 'managed by Puppet' }
+      its(:content) { is_expected.to match 'foobar@foobar.net' }
+    end
   end
 
   context 'Users provisioned' do
