@@ -36,6 +36,13 @@ class vision_desktop (
   contain vision_desktop::idm
   contain vision_desktop::editors::phpstorm
 
+  # Default Shell Config
+  file { '/etc/profile.d/vision_defaults.sh':
+    ensure  => present,
+    mode    => '0644',
+    content => file('vision_desktop/profile.defaults.sh'),
+  }
+
   # Default values for any user
   $user_defaults = {
     ensure     => present,

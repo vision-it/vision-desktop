@@ -72,6 +72,9 @@ RSpec/EmptyLineAfterExampleGroup:
 RSpec/EmptyLineAfterFinalLet:
   Enabled: False
 
+RSpec/RepeatedExampleGroupBody:
+  Enabled: False
+
 Layout/EmptyLinesAroundAttributeAccessor:
   Enabled: False
 
