@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper_acceptance'
 
 describe 'vision_desktop' do
@@ -37,6 +39,10 @@ describe 'vision_desktop' do
       it { is_expected.to be_file }
       its(:content) { is_expected.to match 'managed by Puppet' }
       its(:content) { is_expected.to match 'foobar@foobar.net' }
+    end
+    describe file('/etc/profile.d/vision_defaults.sh') do
+      it { is_expected.to be_file }
+      its(:content) { is_expected.to match 'alias' }
     end
   end
 
