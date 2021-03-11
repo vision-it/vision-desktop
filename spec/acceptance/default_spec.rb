@@ -39,6 +39,7 @@ describe 'vision_desktop' do
       it { is_expected.to be_file }
       its(:content) { is_expected.to match 'managed by Puppet' }
       its(:content) { is_expected.to match 'foobar@foobar.net' }
+      its(:content) { is_expected.to match 'boofar' }
     end
     describe file('/etc/profile.d/vision_defaults.sh') do
       it { is_expected.to be_file }

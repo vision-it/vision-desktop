@@ -6,6 +6,8 @@
 #
 # @param authorized_keys Authorized SSH keys
 # @param monitor_setup xrandr monitoring setup script
+# @param mail Mail address for unattended_upgrade
+# @param extra_origins List of additional packages for auto install
 # @param packages Packages to install
 
 #
@@ -22,6 +24,7 @@ class vision_desktop (
   Hash $authorized_keys,
   Hash $monitor_setup,
   String $mail,
+  Array $extra_origins = [],
   Hash $packages = {},
 
 ) {
@@ -101,6 +104,7 @@ class vision_desktop (
                                 'only_on_error' => true,
 
     },
+    extra_origins          => $extra_origins,
     remove_new_unused_deps => true,
   }
 
