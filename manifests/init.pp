@@ -98,11 +98,12 @@ class vision_desktop (
     owner   => 'root',
   }
 
+  # Auto Update for apt
   class { 'unattended_upgrades':
     install_on_shutdown    => true,
-    mail                   => { 'to'            => $mail,
-                                'only_on_error' => true,
-
+    mail                   => {
+      'to'            => $mail,
+      'only_on_error' => true,
     },
     extra_origins          => $extra_origins,
     remove_new_unused_deps => true,

@@ -1,7 +1,4 @@
 ---
-vision_desktop::nfs::homes_destination: '/home/nfs'
-vision_desktop::nfs::it_destination: '/itshare'
-
 vision_desktop::editors::phpstorm::base_url: 'http://download.jetbrains.com/webide/'
 vision_desktop::editors::phpstorm::version: '2020.3'
 vision_desktop::editors::phpstorm::install_target: '/opt'

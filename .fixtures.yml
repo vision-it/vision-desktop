@@ -5,16 +5,16 @@ fixtures:
       ref: "v6.3.0"
       repo: "https://github.com/puppetlabs/puppetlabs-stdlib"
     sshkeys_core:
-      ref: "2.1.0"
+      ref: "2.2.0"
       repo: "https://github.com/puppetlabs/puppetlabs-sshkeys_core"
     apt:
-      ref: "v7.4.2"
+      ref: "v7.7.1"
       repo: "https://github.com/puppetlabs/puppetlabs-apt"
     archive:
       ref: "v4.6.0"
       repo: "https://github.com/voxpupuli/puppet-archive"
     docker:
-      ref: "v3.11.0"
+      ref: "v3.13.1"
       repo: "https://github.com/puppetlabs/puppetlabs-docker"
     unattended_upgrades:
       ref: "v5.1.0"
