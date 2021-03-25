@@ -21,5 +21,5 @@ vision_desktop::idm::ldap_base: 'dc=foo,dc=bar'
 vision_desktop::idm::ldap_server: 'bar.foo.de'
 vision_desktop::mail: 'foobar@foobar.net'
 vision_desktop::extra_origins:
-  - 'Docker,codename=${distro_codename}'
-  - 'boofar,codename=${distro_codename}'
+  - 'origin=Docker,codename=${distro_codename}'
+  - 'origin=boofar'
