@@ -22,6 +22,7 @@ class vision_desktop::puppet (
 
 ) {
 
+  # Adding the Puppet Repo to get the newest version
   apt::source { 'puppetlabs':
     location => 'https://apt.puppetlabs.com',
     repos    => 'puppet6',
@@ -62,6 +63,8 @@ class vision_desktop::puppet (
     require => Package['puppet-agent'],
   }
 
+  # g10k Configuration
+  # TODO: manage g10k download
   file { '/etc/g10k/':
     ensure  => directory,
   }
@@ -73,7 +76,8 @@ class vision_desktop::puppet (
     require => File['/etc/g10k'],
   }
 
-  # TODO: manage g10k download
+  # Puppet apply Service and Timer
+  # Since we use a masterless setup
   file { '/etc/systemd/system/deploy.service':
     ensure  => present,
     content => file('vision_desktop/deploy.service'),
